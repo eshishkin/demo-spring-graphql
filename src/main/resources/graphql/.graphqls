@@ -1,0 +1,34 @@
+type Query {
+    simple(id: Int): [Order]
+}
+
+type Mutation {
+    create(description: String!): Order
+}
+
+type Order {
+    id: Int
+    description: String
+    state: String
+    customer: Customer
+    items: [Item]
+    created: String
+}
+
+type Customer {
+    name: String
+    email: String
+}
+
+type Item {
+    code: String
+    title: String
+    amount: Int
+    merchant: Merchant
+}
+
+
+type Merchant {
+    name: String
+    locatedId: String
+}
