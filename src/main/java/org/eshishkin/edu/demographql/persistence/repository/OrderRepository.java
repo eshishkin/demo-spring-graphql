@@ -1,11 +1,13 @@
 package org.eshishkin.edu.demographql.persistence.repository;
 
-import org.eshishkin.edu.demographql.persistence.model.Order;
+import org.eshishkin.edu.demographql.persistence.model.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 
-    List<Order> findByCustomerId(String id);
+    List<OrderEntity> findAllById(Long id);
+
+    List<OrderEntity> findByCustomerId(String id);
 }

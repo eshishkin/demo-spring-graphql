@@ -1,10 +1,11 @@
 spring:
   liquibase.enabled: true
+  liquibase.change-log: classpath:/db/changelog/changes.xml
   datasource:
     url: jdbc:mysql://mysql:3306/test
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   graphql:
     graphiql.enabled: true
     schema.printer.enabled: true

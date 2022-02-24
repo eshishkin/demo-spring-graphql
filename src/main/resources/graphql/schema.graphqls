@@ -1,0 +1,8 @@
+type Query {
+    simple(id: Int): [Order]
+}
+
+type Mutation {
+    order(request: OrderRequest!): Order
+    customer(request: CustomerRequest!): Customer
+}

@@ -1,0 +1,4 @@
+type Merchant {
+    name: String
+    locatedId: String
+}

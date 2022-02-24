@@ -23,7 +23,7 @@ import static javax.persistence.CascadeType.ALL;
 @Setter
 @Entity
 @Table(name = "orders")
-public class Order {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,10 +38,10 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private User customer;
+    private UserEntity customer;
 
     @OneToMany(cascade=ALL, mappedBy="order")
-    private List<OrderItem> items;
+    private List<OrderItemEntity> items;
 
     @Column(nullable = false)
     private LocalDate created;

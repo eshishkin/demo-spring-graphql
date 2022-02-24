@@ -1,6 +1,5 @@
 package org.eshishkin.edu.demographql.persistence.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +14,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

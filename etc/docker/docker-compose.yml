@@ -26,16 +26,17 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - JAVA_TOOL_OPTIONS=-Xms640m -Xss512k -Xmx640m -XX:MaxMetaspaceSize=100M -XX:ReservedCodeCacheSize=60M -XX:+UseContainerSupport -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch
+      - JAVA_TOOL_OPTIONS=-Xms256m -Xss512k -Xmx256m -XX:MaxMetaspaceSize=100M -XX:ReservedCodeCacheSize=60M -XX:+UseContainerSupport -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch
     command: [
-        "--spring.liquibase.change-log=classpath:/db/changelog/18-01-changelog.xml",
-        "--debug"
+#        "--spring.liquibase.change-log=classpath:/db/changelog/changes.xml",
+#        "--logging.level.org.springframework=DEBUG",
+#        "--logging.level.com.zaxxer.hikari=INFO"
     ]
 
     networks:
       backend:
         aliases:
-          - neo4j-service
+          - graphql-service
 
 #  prometheus:
 #    image: prom/prometheus:latest

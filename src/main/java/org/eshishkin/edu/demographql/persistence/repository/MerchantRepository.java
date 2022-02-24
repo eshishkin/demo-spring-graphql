@@ -1,7 +1,7 @@
 package org.eshishkin.edu.demographql.persistence.repository;
 
-import org.eshishkin.edu.demographql.persistence.model.Merchant;
+import org.eshishkin.edu.demographql.persistence.model.MerchantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MerchantRepository extends JpaRepository<Merchant, Long> {
+public interface MerchantRepository extends JpaRepository<MerchantEntity, Long> {
 }

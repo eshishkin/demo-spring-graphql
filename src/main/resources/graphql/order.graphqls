@@ -1,9 +1,12 @@
-type Query {
-    simple(id: Int): [Order]
+input OrderRequest {
+    description: String!
+    email: String!
+    items: [OrderItemRequest]!
 }
 
-type Mutation {
-    create(description: String!): Order
+input OrderItemRequest {
+    code: String!
+    amount: Int!
 }
 
 type Order {
@@ -15,20 +18,9 @@ type Order {
     created: String
 }
 
-type Customer {
-    name: String
-    email: String
-}
-
 type Item {
     code: String
     title: String
     amount: Int
     merchant: Merchant
-}
-
-
-type Merchant {
-    name: String
-    locatedId: String
 }

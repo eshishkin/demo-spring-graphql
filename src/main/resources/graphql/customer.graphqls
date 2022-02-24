@@ -1,0 +1,10 @@
+
+input CustomerRequest {
+    name: String!
+    email: String!
+}
+
+type Customer {
+    name: String
+    email: String
+}
