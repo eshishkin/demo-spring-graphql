@@ -25,8 +25,9 @@ services:
       - "8080"
     ports:
       - "8080:8080"
+      - "5005:5005"
     environment:
-      - JAVA_TOOL_OPTIONS=-Xms256m -Xss512k -Xmx256m -XX:MaxMetaspaceSize=100M -XX:ReservedCodeCacheSize=60M -XX:+UseContainerSupport -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xms256m -Xss512k -Xmx256m -XX:MaxMetaspaceSize=100M -XX:ReservedCodeCacheSize=60M -XX:+UseContainerSupport -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch
     command: [
 #        "--spring.liquibase.change-log=classpath:/db/changelog/changes.xml",
 #        "--logging.level.org.springframework=DEBUG",
