@@ -2,14 +2,14 @@ package org.eshishkin.edu.demographql.web;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.eshishkin.edu.demographql.exception.UserAlreadyExistException;
 import org.eshishkin.edu.demographql.model.CustomerRequest;
 import org.eshishkin.edu.demographql.persistence.model.UserEntity;
-import org.eshishkin.edu.demographql.persistence.repository.UserRepository;
+import org.eshishkin.edu.demographql.service.CustomerService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 
@@ -17,18 +17,11 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class CustomerController {
-    private final UserRepository userRepository;
+    private final CustomerService customerService;
 
     @Transactional
     @MutationMapping(name = "customer")
-    public UserEntity createUser(@Valid @Argument CustomerRequest request) {
-        userRepository.findByEmail(request.getEmail()).ifPresent(user -> {
-            throw new UserAlreadyExistException("User already exist in the database: " + user.getEmail());
-        });
-
-        var user = new UserEntity();
-        user.setEmail(request.getEmail());
-        user.setName(request.getName());
-        return userRepository.save(user);
+    public Mono<UserEntity> createUser(@Valid @Argument CustomerRequest request) {
+        return customerService.create(request);
     }
 }
