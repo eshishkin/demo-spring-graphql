@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -37,7 +37,7 @@ public class OrderController {
     }
 
     @MutationMapping("order")
-    public OrderEntity createOrder(@Argument OrderRequest request) {
+    public OrderEntity createOrder(@Valid @Argument OrderRequest request) {
         return orderService.create(request);
     }
 }

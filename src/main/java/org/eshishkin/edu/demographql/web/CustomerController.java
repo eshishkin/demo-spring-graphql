@@ -11,6 +11,8 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Valid;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class CustomerController {
 
     @Transactional
     @MutationMapping(name = "customer")
-    public UserEntity createUser(@Argument CustomerRequest request) {
+    public UserEntity createUser(@Valid @Argument CustomerRequest request) {
         userRepository.findByEmail(request.getEmail()).ifPresent(user -> {
             throw new UserAlreadyExistException("User already exist in the database: " + user.getEmail());
         });
