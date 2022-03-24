@@ -12,6 +12,8 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -22,16 +24,16 @@ public class OrderController {
     private final OrderService orderService;
 
     @QueryMapping
-    public List<OrderEntity> simple(@Argument Long id) {
+    public Flux<OrderEntity> simple(@Argument Long id) {
         log.info("Query Request [id] - {}", id);
         return orderService.getOrders(id);
     }
 
     @SchemaMapping(typeName = "Item", field = "merchant")
-    public MerchantEntity merchant(DataFetchingEnvironment env) {
+    public Mono<MerchantEntity> merchant(DataFetchingEnvironment env) {
         var entity = new MerchantEntity();
         entity.setName("Default Merchant");
-        return entity;
+        return Mono.just(entity);
     }
 
     @MutationMapping("order")

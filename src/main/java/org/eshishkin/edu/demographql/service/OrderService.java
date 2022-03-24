@@ -9,9 +9,9 @@ import org.eshishkin.edu.demographql.persistence.repository.OrderRepository;
 import org.eshishkin.edu.demographql.persistence.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import reactor.core.publisher.Flux;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,8 +21,10 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
 
-    public List<OrderEntity> getOrders(Long id) {
-        return id != null ? orderRepository.findAllById(id) : orderRepository.findAll();
+    public Flux<OrderEntity> getOrders(Long id) {
+        return id != null
+                ? Flux.fromIterable(orderRepository.findAllById(id))
+                : Flux.fromIterable(orderRepository.findAll());
     }
 
     @Transactional
