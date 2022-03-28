@@ -1,3 +1,9 @@
+
+input MerchantRequest {
+    name: String!
+    locatedId: String!
+}
+
 type Merchant {
     name: String
     locatedId: String

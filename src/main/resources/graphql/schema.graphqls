@@ -5,4 +5,5 @@ type Query {
 type Mutation {
     order(request: OrderRequest!): Order
     customer(request: CustomerRequest!): Customer
+    merchant(request: MerchantRequest!): Merchant
 }
