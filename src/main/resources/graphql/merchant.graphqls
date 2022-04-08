@@ -1,10 +1,11 @@
 
 input MerchantRequest {
     name: String!
-    locatedId: String!
+    locatedIn: String!
 }
 
 type Merchant {
+    id: Int
     name: String
-    locatedId: String
+    locatedIn: String
 }

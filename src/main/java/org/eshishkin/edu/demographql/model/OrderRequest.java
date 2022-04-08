@@ -24,5 +24,6 @@ public class OrderRequest {
     public static class OrderItemRequest {
         private String code;
         private Integer amount;
+        private Long merchantId;
     }
 }

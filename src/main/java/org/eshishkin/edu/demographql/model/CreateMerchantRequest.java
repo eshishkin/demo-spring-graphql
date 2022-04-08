@@ -9,5 +9,6 @@ public class CreateMerchantRequest {
 
     @NotBlank
     private String name;
+    @NotBlank
     private String locatedIn;
 }

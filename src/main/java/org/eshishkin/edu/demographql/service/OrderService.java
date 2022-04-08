@@ -44,7 +44,7 @@ public class OrderService {
                     item.setCode(i.getCode());
                     item.setName("Name: " + i.getCode());
                     item.setAmount(i.getAmount());
-                    item.setMerchantId(0L);
+                    item.setMerchantId(i.getMerchantId());
                     item.setOrder(order);
                     return item;
                 })
